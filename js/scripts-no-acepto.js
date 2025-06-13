@@ -2,40 +2,53 @@
 function sendMessage() {
     const name = document.getElementById('nameInput').value.trim();
     const message = document.getElementById('messageTextarea').value.trim();
-    const reason = document.getElementById('reasonTextarea').value.trim();
-    
+    const reason = document.getElementById('reasonTextarea').value.trim(); // solo si no asiste
+
     // Validar campos obligatorios
     if (!name) {
         showNotification('¡Ohana significa familia! Por favor ingresa tu nombre 💙', 'error');
         document.getElementById('nameInput').focus();
         return;
     }
-    
+
     if (!message) {
         showNotification('¡Stitch necesita tu mensaje! No olvides escribir algo bonito 🌺', 'error');
         document.getElementById('messageTextarea').focus();
         return;
     }
-    
-    // Simular envío exitoso
+
+    // Construir mensaje para WhatsApp
+    let mensajeWhatsApp = `Hola! Soy ${name}. Quiero confirmar que *NO PODRE ASSITIR* al cumpleaños 😢`;
+
+    if (reason) {
+        mensajeWhatsApp += `.\nMotivo: ${reason}`;
+    }
+
+    mensajeWhatsApp += `\n\nMensaje para el cumpleañero: ${message}`;
+
+    // Número de destino (cámbialo al número real)
+    const numeroDestino = "51983612222";
+    const url = `https://wa.me/${numeroDestino}?text=${encodeURIComponent(mensajeWhatsApp)}`;
+
+    // Mostrar notificación y enviar
     showNotification('¡Mensaje enviado! Stitch está muy feliz 🎉', 'success');
-    
-    // Opcional: limpiar el formulario después del envío
+    window.open(url, "_blank");
+
+    // Limpiar el formulario después
     setTimeout(() => {
         if (confirm('¿Quieres enviar otro mensaje?')) {
             clearForm();
         }
     }, 2000);
-    
-    // Aquí puedes agregar la lógica para enviar los datos a un servidor
-    console.log('Datos del formulario:', {
+
+    // Registrar en consola
+    console.log('Datos enviados:', {
         nombre: name,
         mensaje: message,
         razon: reason || 'No especificada',
         fecha: new Date().toISOString()
     });
 }
-
 // Función para mostrar notificaciones
 function showNotification(message, type = 'info') {
     // Remover notificación existente si la hay
