@@ -10,8 +10,8 @@
 
 <body>
 
-    <div class="formulario-container">
-        <h1 class="titulo-formulario">TE ESPERAREMOS </h1>
+ <div class="formulario-container">
+        <h1 class="titulo-formulario">TE ESPERAREMOS</h1>
 
         <div class="video-container">
             <div class="video-text">Vídeo feliz</div>
@@ -40,10 +40,18 @@
                     placeholder="Escribe aquí tu mensaje de felicitación..." required></textarea>
             </div>
 
-             <button class="boton-enviar" onclick="enviarWhatsApp()">
+            <button type="submit" class="boton-enviar">
                 <span>ACEPTAR INVITACION</span>
             </button>
         </form>
+
+        <div id="mensajeExito" class="mensaje-exito">
+            ¡Datos enviados correctamente! Tu respuesta ha sido registrada.
+        </div>
+
+        <div id="mensajeError" class="mensaje-error">
+            Error al enviar los datos. Por favor, intenta nuevamente.
+        </div>
     </div>
 
     <script src="js/scripts-acepto.js"></script>

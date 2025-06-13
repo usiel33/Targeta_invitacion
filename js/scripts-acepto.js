@@ -24,47 +24,57 @@ document.getElementById('formularioAcepto').addEventListener('submit', function 
     }
 });
 
+ const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbywaIMksKt_P8EswnNJf_J-0vwuVjHuT15fArrFPIiwlZJll4RVqZH--vYGZtQp2X2fgw/exec';
 
-//funcion para enviar mensaje por whatsapth
-function enviarWhatsApp() {
-    const nombre = document.getElementById('nombre').value.trim();
-    const relacion = document.getElementById('relacion').value.trim();
-    const mensaje = document.getElementById('mensaje').value.trim();
+        document.getElementById('formularioAcepto').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData();
+            formData.append('nombre', document.getElementById('nombre').value);
+            formData.append('relacion', document.getElementById('relacion').value);
+            formData.append('mensaje', document.getElementById('mensaje').value);
+            formData.append('fecha', new Date().toLocaleString());
 
-    if (!nombre || !relacion || !mensaje) {
-        alert("Por favor, completa todos los campos del formulario.");
-        return;
-    }
+            try {
+                // Mostrar que se está enviando
+                const boton = document.querySelector('.boton-enviar');
+                const textoOriginal = boton.innerHTML;
+                boton.innerHTML = '<span>Enviando...</span>';
+                boton.disabled = true;
 
-    const datos = {
-        Nombre: nombre,
-        Relacion: relacion,
-        Mensaje: mensaje
-    };
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData
+                });
 
-    const urlScript = 'https://script.google.com/macros/s/AKfycbyR-yuilgssFnBDZv4V-ymJYYFWKTYSrX69zrytfH1ub-6LvcpwiOewN2yeS6iWBMwuKQ/exec'; // Usa aquí tu URL real
+                if (response.ok) {
+                    document.getElementById('mensajeExito').style.display = 'block';
+                    document.getElementById('mensajeError').style.display = 'none';
+                    document.getElementById('formularioAcepto').reset();
+                } else {
+                    throw new Error('Error en la respuesta del servidor');
+                }
 
-    fetch(urlScript, {
-        method: 'POST',
-        body: JSON.stringify(datos),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-        .then(response => {
-            if (response.ok) {
-                alert("🎉 Tu asistencia ha sido registrada con éxito. ¡Gracias por confirmar!");
-                document.getElementById('formularioAcepto').reset();
-            } else {
-                alert("⚠️ Ocurrió un problema al registrar tu asistencia. Intenta nuevamente.");
+                // Restaurar botón
+                boton.innerHTML = textoOriginal;
+                boton.disabled = false;
+
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('mensajeError').style.display = 'block';
+                document.getElementById('mensajeExito').style.display = 'none';
+                
+                // Restaurar botón
+                const boton = document.querySelector('.boton-enviar');
+                boton.innerHTML = '<span>ACEPTAR INVITACION</span>';
+                boton.disabled = false;
             }
-        })
-        .catch(error => {
-            console.error("Error al enviar:", error);
-            alert("❌ Error al conectar con el servidor. Verifica tu conexión o intenta más tarde.");
         });
-}
 
+        // Funcionalidad del botón de audio (placeholder)
+        document.querySelector('.boton-audio').addEventListener('click', function() {
+            alert('Funcionalidad de audio por implementar');
+        });
 
 
 
