@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style/style-acepto.css">
 </head>
+
 <body>
-    
-<div class="formulario-container">
+
+    <div class="formulario-container">
         <h1 class="titulo-formulario">TE ESPERAREMOS </h1>
-        
+
         <div class="video-container">
             <div class="video-text">Vídeo feliz</div>
         </div>
@@ -18,13 +20,15 @@
         <form id="formularioAcepto">
             <div class="campo-formulario">
                 <label class="label-campo" for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" class="input-texto" placeholder="Ingresa tu nombre completo" required>
+                <input type="text" id="nombre" name="nombre" class="input-texto"
+                    placeholder="Ingresa tu nombre completo" required>
             </div>
 
             <div class="campo-formulario">
                 <label class="label-campo" for="relacion">Relación con el cumpleañero:</label>
                 <div class="campo-relacion">
-                    <input type="text" id="relacion" name="relacion" class="input-texto input-relacion" placeholder="Ej: Primo, amigo, vecino..." required>
+                    <input type="text" id="relacion" name="relacion" class="input-texto input-relacion"
+                        placeholder="Ej: Primo, amigo, vecino..." required>
                     <button type="button" class="boton-audio">🎤</button>
                 </div>
             </div>
@@ -32,31 +36,31 @@
             <div class="campo-formulario">
                 <label class="label-campo" for="mensaje">Mensaje personalizado:</label>
                 <p class="texto-instruccion">Envía un mensaje personalizado para el cumpleañero:</p>
-                <textarea id="mensaje" name="mensaje" class="textarea-mensaje" placeholder="Escribe aquí tu mensaje de felicitación..." required></textarea>
+                <textarea id="mensaje" name="mensaje" class="textarea-mensaje"
+                    placeholder="Escribe aquí tu mensaje de felicitación..." required></textarea>
             </div>
 
-            <button type="submit" class="boton-enviar">Aceptar Invitación</button>
+            <button type="submit" class="boton-enviar" onclick="enviarWhatsApp()">Aceptar Invitación</button>
         </form>
     </div>
 
     <script>
+        const nombre = document.getElementById('nombre').value;
+        const relacion = document.getElementById('relacion').value;
+        const mensaje = document.getElementById('mensaje').value;
         // Funcionalidad del formulario
-        document.getElementById('formularioAcepto').addEventListener('submit', function(e) {
+        document.getElementById('formularioAcepto').addEventListener('submit', function (e) {
             e.preventDefault();
-            
-            const nombre = document.getElementById('nombre').value;
-            const relacion = document.getElementById('relacion').value;
-            const mensaje = document.getElementById('mensaje').value;
-            
+
             if (nombre && relacion && mensaje) {
                 // Animación de éxito
                 const boton = document.querySelector('.boton-enviar');
                 boton.textContent = '¡Enviado! 🎉';
                 boton.style.background = 'linear-gradient(135deg, #2196F3, #1976D2)';
-                
+
                 setTimeout(() => {
                     alert(`¡Gracias ${nombre}! Tu aceptación ha sido enviada. Nos vemos en la fiesta! 🎊`);
-                    
+
                     // Resetear formulario después de 2 segundos
                     setTimeout(() => {
                         this.reset();
@@ -67,43 +71,67 @@
             }
         });
 
+
+        //funcion para enviar mensaje por whatsapth
+        function enviarWhatsApp() {
+            const nombre = document.getElementById('nombre').value;
+            const relacion = document.getElementById('relacion').value;
+            const mensaje = document.getElementById('mensaje').value;
+            let mensajePersonalizado = "";
+
+            if (!mensaje) {
+                mensajePersonalizado = `Hola! Soy ${nombre}, el/la ${relacion} del cumpleañero. Quiero confirmar mi asistencia. 🎉`;
+            } else {
+                mensajePersonalizado = `Hola! Soy ${nombre}, el/la ${relacion} del cumpleañero. Quiero confirmar mi asistencia. 🎉
+
+Mensaje para el cumpleañero: ${mensaje}`;
+            }
+
+            const numeroDestino = "51948621823";
+            const url = `https://wa.me/${numeroDestino}?text=${encodeURIComponent(mensajePersonalizado)}`;
+            window.open(url, "_blank");
+        }
+
+
+
+
         // Funcionalidad del botón de audio (simulada)
-        document.querySelector('.boton-audio').addEventListener('click', function() {
+        document.querySelector('.boton-audio').addEventListener('click', function () {
             const input = document.getElementById('relacion');
-            
+
             // Simular grabación de audio
             this.textContent = '🔴';
             this.style.background = 'rgba(255, 0, 0, 0.3)';
-            
+
             setTimeout(() => {
                 this.textContent = '🎤';
                 this.style.background = 'rgba(255, 255, 255, 0.2)';
-                
+
                 // Simular transcripción
                 const relaciones = ['Primo hermano', 'Mejor amigo', 'Compañero de trabajo', 'Vecino', 'Amigo de la infancia'];
                 const relacionAleatoria = relaciones[Math.floor(Math.random() * relaciones.length)];
                 input.value = relacionAleatoria;
-                
+
                 // Efecto de escritura
                 input.style.animation = 'focusGlow 0.5s ease-in-out';
             }, 2000);
         });
 
         // Funcionalidad del video (simulada)
-        document.querySelector('.video-container').addEventListener('click', function() {
+        document.querySelector('.video-container').addEventListener('click', function () {
             this.style.background = 'rgba(255, 255, 255, 0.2)';
-            
+
             // Simular reproducción de video
             let contador = 3;
             const intervalo = setInterval(() => {
                 this.querySelector('.video-text').textContent = `Reproduciendo... ${contador}s`;
                 contador--;
-                
+
                 if (contador < 0) {
                     clearInterval(intervalo);
                     this.querySelector('.video-text').textContent = 'Vídeo completado ✓';
                     this.style.background = 'rgba(76, 175, 80, 0.3)';
-                    
+
                     setTimeout(() => {
                         this.querySelector('.video-text').textContent = 'Vídeo feliz';
                         this.style.background = 'rgba(255, 255, 255, 0.1)';
@@ -117,7 +145,7 @@
         campos.forEach((campo, index) => {
             campo.style.opacity = '0';
             campo.style.transform = 'translateY(20px)';
-            
+
             setTimeout(() => {
                 campo.style.transition = 'all 0.5s ease';
                 campo.style.opacity = '1';
