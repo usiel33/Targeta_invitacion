@@ -75,56 +75,26 @@
 
 
         //funcion para enviar mensaje por whatsapth
-   function sendMessage() {
-    const name = document.getElementById('nameInput').value.trim();
-    const message = document.getElementById('messageTextarea').value.trim();
-    const reason = document.getElementById('reasonTextarea').value.trim(); // solo si no asiste
+   function enviarWhatsApp() {
+    const nombre = document.getElementById('nombre').value.trim();
+    const relacion = document.getElementById('relacion').value.trim();
+    const mensaje = document.getElementById('mensaje').value.trim();
 
-    // Validar campos obligatorios
-    if (!name) {
-        showNotification('¡Ohana significa familia! Por favor ingresa tu nombre 💙', 'error');
-        document.getElementById('nameInput').focus();
-        return;
+    let mensajePersonalizado = "";
+
+    if (!mensaje) {
+        mensajePersonalizado = `Hola! Soy ${nombre}, el/la ${relacion} del cumpleañero. Quiero confirmar mi asistencia. 🎉`;
+    } else {
+        mensajePersonalizado = `Hola! Soy ${nombre}, el/la ${relacion} del cumpleañero. Quiero confirmar mi asistencia. 🎉
+
+Mensaje para el cumpleañero: ${mensaje}`;
     }
 
-    if (!message) {
-        showNotification('¡Stitch necesita tu mensaje! No olvides escribir algo bonito 🌺', 'error');
-        document.getElementById('messageTextarea').focus();
-        return;
-    }
-
-    // Construir mensaje para WhatsApp
-    let mensajeWhatsApp = `Hola! Soy ${name}. Quiero confirmar que *NO* podré asistir al cumpleaños 😢`;
-
-    if (reason) {
-        mensajeWhatsApp += `.\nMotivo: ${reason}`;
-    }
-
-    mensajeWhatsApp += `\n\nMensaje para el cumpleañero: ${message}`;
-
-    // Número de destino (cámbialo al número real)
-    const numeroDestino = "51983612222";
-    const url = `https://wa.me/${numeroDestino}?text=${encodeURIComponent(mensajeWhatsApp)}`;
-
-    // Mostrar notificación y enviar
-    showNotification('¡Mensaje enviado! Stitch está muy feliz 🎉', 'success');
+    const numeroDestino = "51948621823";
+    const url = `https://wa.me/${numeroDestino}?text=${encodeURIComponent(mensajePersonalizado)}`;
     window.open(url, "_blank");
-
-    // Limpiar el formulario después
-    setTimeout(() => {
-        if (confirm('¿Quieres enviar otro mensaje?')) {
-            clearForm();
-        }
-    }, 2000);
-
-    // Registrar en consola
-    console.log('Datos enviados:', {
-        nombre: name,
-        mensaje: message,
-        razon: reason || 'No especificada',
-        fecha: new Date().toISOString()
-    });
 }
+
 
 
 
