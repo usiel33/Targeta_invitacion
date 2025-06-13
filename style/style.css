@@ -12,12 +12,22 @@
             color: #fff;
             overflow-x: hidden;
         }
+        .btn-musica{
+            margin-top:20px;
+            margin-left: 20px;
+            background-color: white;
+            border:none;
+            border-radius:1.5rem;
+            height:29px;
+            width: 120px;
+        }
 
         .contenedor {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
+
 
         /* SECCIÓN PRINCIPAL */
         .seccion-principal {
@@ -71,12 +81,9 @@
         }
 
         .img-inicio img {
-            max-width: 300px;
-            width: 100%;
-            height: auto;
-            border-radius: 50%;
-            border: 5px solid rgba(255,255,255,0.3);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            max-width: 400px;
+            width: 150%;
+            height: auto;  
         }
 
         .info-fecha {

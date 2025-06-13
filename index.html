@@ -9,6 +9,13 @@
 </head>
 
 <body>
+    <!--AUDIO QUE SE REPODRUCE COMO FONDO-->
+    <button class="btn-musica" onclick="document.getElementById('musicaFondo').play()">🎵 Activar música</button>
+
+    <audio id="musicaFondo" loop>
+        <source src="music/fondo-stich.mp3" type="audio/mpeg">
+    </audio>
+
 
     <section class="seccion-principal">
         <div class="contenedor">
@@ -24,26 +31,27 @@
             <div class="caja-contador">
                 <div class="contador-display">
                     <div class="contador-grupo">
-                        <div class="contador-numero">10</div>
+                        <div id="dias" class="contador-numero">00</div>
                         <div class="contador-label">DÍAS</div>
                     </div>
                     <div class="contador-separador">:</div>
                     <div class="contador-grupo">
-                        <div class="contador-numero">05</div>
+                        <div id="horas" class="contador-numero">00</div>
                         <div class="contador-label">HRS</div>
                     </div>
                     <div class="contador-separador">:</div>
                     <div class="contador-grupo">
-                        <div class="contador-numero">23</div>
+                        <div id="minutos" class="contador-numero">00</div>
                         <div class="contador-label">MIN</div>
                     </div>
                     <div class="contador-separador">:</div>
                     <div class="contador-grupo">
-                        <div class="contador-numero">45</div>
+                        <div id="segundos" class="contador-numero">00</div>
                         <div class="contador-label">SEC</div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -100,11 +108,11 @@
                     <button class="boton-assitencia confirmar">ASISTIRÉ</button>
                 </a>
 
-                 <a href="formulario_no_acepto.html">
-                <button class="boton-assitencia declinar">NO ASISTIRÉ</button>
+                <a href="formulario_no_acepto.html">
+                    <button class="boton-assitencia declinar">NO ASISTIRÉ</button>
                 </a>
 
-              
+
             </div>
         </div>
     </section>
