@@ -1,0 +1,289 @@
+
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Freckle+Face&family=Nunito:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #4a90e2 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s infinite linear;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+
+        .formulario-container {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+
+        .titulo-formulario {
+            font-family: 'Freckle Face', cursive;
+            font-size: 2rem;
+            color: #de1919;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .video-container {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-container::after {
+            content: '▶';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-45%, -50%);
+            font-size: 2rem;
+            color: #fff;
+            z-index: 2;
+        }
+
+        .video-text {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 400;
+        }
+
+        .campo-formulario {
+            margin-bottom: 25px;
+        }
+
+        .label-campo {
+            display: block;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .input-texto {
+            width: 100%;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            color: #fff;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .input-texto:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .input-texto::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .campo-relacion {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .input-relacion {
+            flex: 1;
+        }
+
+        .boton-audio {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            font-size: 1.2rem;
+            min-width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .boton-audio:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .textarea-mensaje {
+            width: 100%;
+            min-height: 120px;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            color: #fff;
+            resize: vertical;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .textarea-mensaje:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .textarea-mensaje::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .texto-instruccion {
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .boton-enviar {
+            width: 100%;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            border: none;
+            border-radius: 15px;
+            padding: 18px;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.3rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+        }
+
+        .boton-enviar:hover {
+            background: linear-gradient(135deg, #45a049, #3d8b40);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .boton-enviar:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animaciones */
+        .formulario-container {
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .formulario-container {
+                padding: 25px;
+                margin: 10px;
+            }
+            
+            .titulo-formulario {
+                font-size: 1.5rem;
+            }
+            
+            .campo-relacion {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .input-relacion {
+                width: 100%;
+            }
+            
+            .boton-audio {
+                width: 100%;
+            }
+        }
+
+        /* Efectos de enfoque mejorados */
+        .input-texto:focus,
+        .textarea-mensaje:focus {
+            animation: focusGlow 0.3s ease-in-out;
+        }
+
+        @keyframes focusGlow {
+            0% { box-shadow: 0 0 0 rgba(255, 255, 255, 0); }
+            100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); }
+        }

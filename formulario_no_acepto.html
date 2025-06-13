@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Stitch</title>
+    <link rel="stylesheet" href="style/style-no-acepto.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-card">
+            <h1 class="title">LAMENTAMOS TU AUSENCIA, ENVÍA UN MENSAJE DE REGALO</h1>
+            
+            <div class="video-placeholder">
+                <span class="video-text">Video triste</span>
+                <div class="stitch-ears"></div>
+            </div>
+            
+            <div class="name-field">
+                <input type="text" placeholder="NOMBRE:" class="name-input" id="nameInput">
+            </div>
+            
+            <div class="message-fields">
+                <div class="field-container">
+                    <label>Envía un mensaje de felicitaciones de tu parte</label>
+                    <textarea class="message-textarea" id="messageTextarea" placeholder="Escribe tu mensaje aquí..."></textarea>
+                </div>
+                
+                <div class="field-container">
+                    <label>Da a saber por qué no asististe (OPCIONAL)</label>
+                    <textarea class="reason-textarea" id="reasonTextarea" placeholder="Explica tu ausencia..."></textarea>
+                </div>
+            </div>
+            
+            <button class="send-button" onclick="sendMessage()">
+                <span>ENVIAR MENSAJE</span>
+                <div class="stitch-paw"></div>
+            </button>
+        </div>
+        
+        <!-- Decoraciones de Stitch -->
+        <div class="stitch-decoration stitch-left">🌺</div>
+        <div class="stitch-decoration stitch-right">🌴</div>
+    </div>
+
+    <script src="js/scripts-no-acepto.js"></script>
+</body>
+</html>
