@@ -26,7 +26,7 @@ function sendMessage() {
 
     mensajeWhatsApp += `\n\nMensaje para el cumpleañero: ${message}`;
 
-    // Número de destino (cámbialo al número real)
+   
     const numeroDestino = "51983612222";
     const url = `https://wa.me/${numeroDestino}?text=${encodeURIComponent(mensajeWhatsApp)}`;
 
