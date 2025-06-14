@@ -13,18 +13,26 @@
     <button class="btn-musica" onclick="document.getElementById('musicaFondo').play()">🎵 Activar música</button>
 
     <audio id="musicaFondo" loop>
-        <source src="music/fondo-stich.mp3" type="audio/mpeg">
+        <source src="music/audio-stich.mp3" type="audio/mpeg">
     </audio>
 
 
     <section class="seccion-principal">
         <div class="contenedor">
-            <h1 class="titulo-principal">¡TIENES UNA INVITACIÓN!</h1>
+            <h1 class="titulo-principal">¡TE INVITAMOS A UN DIA ESPECIAL!</h1>
             <div class="img-inicio">
                 <img src="img/stichFondo.png" alt="Stitch">
             </div>
+
+            <div class="info-festejado">
+                <h2 class="nombre-festejado">PEDRO</h2>
+                <h2>CUMPLE</h2>
+                <h2 class="edad">10</h2>
+            </div>
+
+
             <div class="info-fecha">
-                <p class="fecha">Fecha : 12/04/2025 10:30 PM</p>
+                <p class="fecha">Fecha : <span class="fecha-evento">12/04/2025 10:30 PM</span></p>
                 <p>Faltan</p>
             </div>
 
@@ -56,6 +64,7 @@
     </section>
 
     <section class="seccion-fotos">
+        <h2 class="titulo-fotos">FOTOS DE PEDRO</h2>
         <div class="slider-container">
             <div class="slider" id="slider">
                 <div class="slide"> <img src="img/niño1.jpeg" alt="Imagen 1"></div>
