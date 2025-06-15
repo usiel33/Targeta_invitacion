@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Stitch</title>
+    <title>Formulario de Stitch - No Asisto</title>
     <link rel="stylesheet" href="style/style-no-acepto.css">
 </head>
 <body>
@@ -12,20 +12,25 @@
             <h1 class="title">LAMENTAMOS TU AUSENCIA, ENVÍA UN MENSAJE DE REGALO</h1>
             
             <div class="video-placeholder">
-                 <video autoplay loop  playsinline id="miVideo">
+                 <video autoplay loop playsinline id="miVideo">
                 <source src="video/stich-llorando.mp4" type="video/mp4">
                 Tu navegador no soporta el video.
             </video>
             </div>
             
             <div class="name-field">
-                <input type="text" placeholder="NOMBRE:" class="name-input" id="nameInput">
+                <input type="text" placeholder="NOMBRE:" class="name-input" id="nameInput" required>
+            </div>
+            
+            <!-- Campo opcional para número de teléfono -->
+            <div class="name-field">
+                <input type="tel" placeholder="NÚMERO DE TELÉFONO (OPCIONAL):" class="name-input" id="phoneInput">
             </div>
             
             <div class="message-fields">
                 <div class="field-container">
                     <label>Envía un mensaje de felicitaciones de tu parte</label>
-                    <textarea class="message-textarea" id="messageTextarea" placeholder="Escribe tu mensaje aquí..."></textarea>
+                    <textarea class="message-textarea" id="messageTextarea" placeholder="Escribe tu mensaje aquí..." required></textarea>
                 </div>
                 
                 <div class="field-container">
